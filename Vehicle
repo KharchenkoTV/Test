@@ -1,0 +1,61 @@
+package com.Test;
+
+public class Main {
+
+    public static void main(String[] args) {
+        BiCycle bc1 = new BiCycle();
+        bc1.color = "green";
+        bc1.move();
+    }
+
+    public static abstract class Vehicle {
+        String color;
+
+        void Vehicle(String color) {
+            System.out.println("Car is " + color);
+        }
+
+        void move (){
+            System.out.println("Vehicle is being moved");
+        };
+
+        void changeWheels (){
+            System.out.println("Wheels are changed");
+        };
+    }
+
+    public static abstract class Wagon extends Vehicle{
+        int wheels = 4;
+    }
+
+    public static class Car extends Wagon implements Engine {
+
+    }
+
+    public static class Cycle extends Vehicle {
+        int wheels = 2;
+    }
+
+    public static class BiCycle extends Cycle {
+
+    }
+
+    public static class motorCycle extends Cycle implements Engine{
+
+    }
+
+    public interface Engine {
+
+        default void startEngine() {
+            System.out.println("Engine started");
+        }
+
+        default void gas(int a) {
+        }
+
+        default void brake (int a) {
+        };
+
+    }
+
+}
